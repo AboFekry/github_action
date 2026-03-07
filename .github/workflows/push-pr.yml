@@ -1,0 +1,28 @@
+name: Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - fekry
+    paths:
+      - "src/**"   # trigger only if files inside src change
+
+  pull_request:
+    branches:
+      - main
+      - fekry
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
