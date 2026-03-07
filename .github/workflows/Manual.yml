@@ -1,7 +1,16 @@
-name: Manual Deploy
+name: Manual Deploy with Environment Selection
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
 
 jobs:
   deploy:
